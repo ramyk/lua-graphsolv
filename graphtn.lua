@@ -1,3 +1,6 @@
+-- ALL NUMERICAL DATA IS HANDLY COLLECTED FROM
+-- https://distancecalculator.globefeed.com/
+
 -- encoder: from governorates names to codes
 local encoder = {
     Bizerte = "bz", Ariana = "ar", Manouba = "mb",
