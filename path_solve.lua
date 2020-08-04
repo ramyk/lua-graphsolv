@@ -3,16 +3,20 @@ graph = require "graphtn"
 solver = require "ucs"
 
 -- trip selection
-io.write("Departure: ")
-local dpt = io.read()
-io.write("Destination: ")
-local dst = io.read()
+local dpt = nil
+repeat
+    io.write("Departure: ")
+    dpt = graph.encoder[io.read()]
+until dpt
+local dst = nil
+repeat
+    io.write("Destination: ")
+    dst = graph.encoder[io.read()]
+until dst
 
 -- path solving
 io.write("\n")
-local path = solver.solve(graph.map,
-                          graph.encoder[dpt],
-                          graph.encoder[dst])
+local path = solver.solve(graph.map, dpt, dst)
 if path then
     -- formatting output
     local cost = 0
