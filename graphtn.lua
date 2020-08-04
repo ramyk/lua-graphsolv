@@ -33,7 +33,7 @@ local decoder = {
 local map = {
     bz = { ar=63, mb=77, bj=105 },
     ar = { bz=63, mb=14, tn=8 },
-    mb = { bz=77, ar=14, tn=8, bj=108, zg=64 },
+    mb = { bz=77, ar=14, tn=9, bj=108, zg=64 },
     tn = { ar=8, mb=9, ba=8, nb=77 },
     ba = { tn=8, nb=71, zg=51 },
     bj = { bz=105, mb=108, jd=50, zg=133, sl=102 },
