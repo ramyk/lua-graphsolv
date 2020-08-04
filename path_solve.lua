@@ -1,6 +1,6 @@
 list = require "listutils"
 graph = require "graphtn"
-solver = require "ucs"
+solver = require "greedysearch"
 
 -- trip selection
 local dpt = nil
@@ -16,7 +16,7 @@ until dst
 
 -- path solving
 io.write("\n")
-local path = solver.solve(graph.map, dpt, dst)
+local path = solver.solve(graph.map, graph.sld, dpt, dst)
 if path then
     -- formatting output
     local cost = 0
