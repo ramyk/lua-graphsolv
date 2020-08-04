@@ -1,5 +1,6 @@
+list = require "listutils"
 graph = require "graphtn"
-solver = require "bfs"
+solver = require "dfs"
 
 -- trip selection
 io.write("Departure: ")
@@ -12,17 +13,17 @@ io.write("\n")
 local path = solver.solve(graph.map,
                           graph.encoder[dpt],
                           graph.encoder[dst])
-local cost = 0
 if path then
-    for i=1,#path do
-        cost = cost + path[i][2]
-    end
     -- formatting output
+    local cost = 0
     io.write("Found Path: ")
-    io.write(graph.decoder[path[1][1]])
-    for i=2,#path do
-        io.write('--('..path[i][2]..')--')
-        io.write(graph.decoder[path[i][1]])
+    io.write(graph.decoder[path:popright()[1]])
+    local node = path:popright()
+    while node do
+        cost = cost + node[2]
+        io.write('--('..node[2]..')--')
+        io.write(graph.decoder[node[1]])
+        node = path:popright()
     end
     io.write("\nTotal Distance: "..cost)
 else
