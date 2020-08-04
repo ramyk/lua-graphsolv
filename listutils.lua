@@ -7,6 +7,14 @@ function List:new ()
     return list
 end
 
+function List:copy()
+    local list = {}
+    for k,v in pairs(self) do
+        list[k] = v
+    end
+    return setmetatable(list, getmetatable(self))
+end
+
 function List:pushright (item)
     local last = self.last + 1
     self.last = last
