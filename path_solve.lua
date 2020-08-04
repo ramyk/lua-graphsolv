@@ -1,6 +1,6 @@
 list = require "listutils"
 graph = require "graphtn"
-solver = require "dfs"
+solver = require "ucs"
 
 -- trip selection
 io.write("Departure: ")
