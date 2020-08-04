@@ -15,6 +15,16 @@ function List:copy()
     return setmetatable(list, getmetatable(self))
 end
 
+function List:table()
+    local tab = {}
+    for k,v in pairs(self) do
+        if k ~= "first" and k ~= "last" then
+            tab[k] = v
+        end
+    end
+    return tab
+end
+
 function List:pushright (item)
     local last = self.last + 1
     self.last = last
