@@ -1,6 +1,5 @@
 List = require "listutils"
 Set = require "setutils"
-Heap = require "heaputils"
 
 local function solve (graph, sld, depart, dest)
     local function compare (a,b)
@@ -10,19 +9,17 @@ local function solve (graph, sld, depart, dest)
     local path = List:new()
     local trials = 0
     local stuck = true
+    local curr_node = nil
 
     path:pushleft({depart, 0})
     repeat
         trials = trials + 1
-        local curr_node = path:popleft()
-        if curr_node[1] == dest then
-            path:pushleft(curr_node)
-            return path
-        end
+        curr_node = path:popleft()
+        path:pushleft(curr_node)
+        if curr_node[1] == dest then return path end
         stuck = true
         for node,cost in pairs(graph[curr_node[1]]) do
             if not (explored:contains(node)) and compare(node, curr_node[1]) then
-                path:pushleft(curr_node)
                 path:pushleft({node, cost})
                 stuck = false
                 break
@@ -31,10 +28,10 @@ local function solve (graph, sld, depart, dest)
         explored:insert(curr_node[1])
     until stuck or trials >= 100
 
-    if stuck then
-        io.write("Stuck at "..path:popleft()[1])
-    elseif trials >= 100 then
-        io.write("Time limit exceeded at "..path:popleft()[1])
+    if trials >= 100 then
+        io.write("Time limit exceeded at "..curr_node[1])
+    elseif stuck then
+        io.write("Stuck at "..curr_node[1])
     end
 
     return nil
