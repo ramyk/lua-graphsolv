@@ -1,5 +1,4 @@
 List = require "listutils"
-Set = require "setutils"
 Heap = require "heaputils"
 
 local function pathcost (path)
@@ -17,7 +16,7 @@ end
 
 local function solve (graph, depart, dest)
     local totrace = Heap:new(pathcompare)
-    local explored = Set:new()
+    local explored = {}
     local curr_path = List:new()
 
     curr_path:pushleft({depart, 0})
@@ -29,14 +28,14 @@ local function solve (graph, depart, dest)
             return curr_path
         end
         for node,cost in pairs(graph[curr_node[1]]) do
-            if not (explored:contains({node, curr_cost + cost})) then
+            if explored[node] == nil or (explored[node] > curr_cost + cost) then
                 local holder = curr_path:copy()
                 holder:pushleft(curr_node)
                 holder:pushleft({node, cost})
                 totrace:insert(holder)
             end
         end
-        explored:insert({curr_node[1], curr_cost})
+        explored[curr_node[1]] = curr_cost
         curr_path = totrace:pop()
     until not curr_path
 
