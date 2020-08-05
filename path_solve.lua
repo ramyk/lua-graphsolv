@@ -1,6 +1,6 @@
 list = require "listutils"
 graph = require "graphtn"
-solver = require "greedysearch"
+solver = require "astar"
 
 -- trip selection
 local dpt = nil
