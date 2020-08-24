@@ -16,9 +16,14 @@ until dst
 
 -- path solving
 io.write("\n")
+-- if using a heuristic-based solver add the 'graph.sld'
+-- parameter as a second argument for the solve function
+-- otherwise use it with only the standard 3 parameters
+-- which are the graph, the departure and the destination
 local path = solver.solve(graph.map, graph.sld, dpt, dst)
 if path then
-    -- formatting output
+    -- formatting output as it's received
+    -- as a reversed stack of cities names
     local cost = 0
     io.write("Found Path: ")
     io.write(graph.decoder[path:popright()[1]])
