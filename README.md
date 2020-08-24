@@ -13,3 +13,5 @@ The search algorithms implemented are:
 - [x] A-star Search
 - [x] Hill Climbing Algorithm
 - [x] Steepest-Ascent Hill Climbing
+
+![Tunisia governorates/cities graph example](https://github.com/ramyk/lua-graphsolv/raw/master/data/tn.png)
