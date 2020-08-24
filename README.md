@@ -1,2 +1,2 @@
 # lua-graphsolv
-Graph algorithms and search agents implemented in Lua language for fun and some practice.
+A project I've created for some fun and some practice of basic and semi-advanced search agents using the Lua language.

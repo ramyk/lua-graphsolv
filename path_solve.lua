@@ -1,6 +1,6 @@
-list = require "listutils"
-graph = require "graphtn"
-solver = require "steephillclimb"
+list = require "utils/listutils"
+graph = require "data/graphtn"
+solver = require "algos/steephillclimb"
 
 -- trip selection
 local dpt = nil
