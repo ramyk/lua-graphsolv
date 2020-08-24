@@ -1,5 +1,11 @@
 list = require "utils/listutils"
+
+-- if using another graph, please
+-- use the 'graphtn.lua' design
 graph = require "data/graphtn"
+
+-- update the solver by choosing one
+-- from the 'algos' package
 solver = require "algos/steephillclimb"
 
 -- trip selection
@@ -23,7 +29,7 @@ io.write("\n")
 local path = solver.solve(graph.map, graph.sld, dpt, dst)
 if path then
     -- formatting output as it's received
-    -- as a reversed stack of cities names
+    -- as a reversed list of cities names
     local cost = 0
     io.write("Found Path: ")
     io.write(graph.decoder[path:popright()[1]])
